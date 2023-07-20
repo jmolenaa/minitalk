@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 23:22:42 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/02/21 07:34:33 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/07/20 13:50:35 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	recieve_bit(int flag, t_message *current_message)
 			if (current_message->str == NULL)
 			{
 				kill(current_message->pid, SIGUSR2);
-				ft_exit_with_error("Malloc failure. Shutting down.\n");
+				ft_exit_with_error("Malloc failure. Shutting down.\n", 12);
 			}
 		}
 	}
@@ -105,6 +105,6 @@ void	handle_signal(int flag)
 	{
 		clear_struct(&current_message);
 		ft_exit_with_error("Sending signal to client failed. \
-		Please exit client manually.\n");
+		Please exit client manually.\n", 1);
 	}
 }

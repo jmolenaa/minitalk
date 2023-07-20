@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 22:16:28 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/02/17 22:42:16 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/07/20 13:50:53 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	send_bit(int bit, int pid)
 		check = kill(pid, SIGUSR2);
 	if (check == -1)
 		ft_exit_with_error("Sending signal to server failed. \
-		Please make sure you've entered the server PID\n");
+		Please make sure you've entered the server PID\n", 1);
 }
 
 void	send_char(unsigned char c, int pid)
@@ -74,7 +74,7 @@ void	send_str_len(int pid, char *str)
 		i++;
 	}
 	if (g_flag == 1)
-		ft_exit_with_error("Malloc failure on server side. Shutting down.");
+		ft_exit_with_error("Malloc failure on server side. Shutting down.", 12);
 }
 
 void	send_pid(int pid)
