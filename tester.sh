@@ -2,6 +2,7 @@ PID=$1
 LONG=$(cat files_for_tester/test_longer)
 LONGISH=$(cat files_for_tester/test_longish)
 VERYLONG=$(cat files_for_tester/test_very_long)
+HUNDREDK=$(cat files_for_tester/test_100k)
 UNICODE=$(cat files_for_tester/test_unicode)
 
 #!/bin/zsh
@@ -20,7 +21,7 @@ sleep 2
 
 printf "\n\n\033[1;32mtesting multiple strings one after another\033[0m\n"
 sleep 2
-for i in {1..100};do
+for i in {1..1000};do
 	./client $PID "this is string nbr $i"
 done;
 
@@ -40,13 +41,21 @@ start=$(date +%s)
 end=$(date +%s)
 printf "\nexecution took %d seconds\n" $(($end - $start))
 
-# printf "\n\n\033[1;32mtest with 38605 characters\033[0m\n"
-# sleep 2
-# printf "\nrunning...\n"
-# start=$(date +%s)
-# ./client $PID "$VERYLONG"
-# end=$(date +%s)
-# printf "\nexecution took %d seconds\n" $(($end - $start))
+printf "\n\n\033[1;32mtest with 38605 characters\033[0m\n"
+sleep 2
+printf "\nrunning...\n"
+start=$(date +%s)
+./client $PID "$VERYLONG"
+end=$(date +%s)
+printf "\nexecution took %d seconds\n" $(($end - $start))
+
+printf "\n\n\033[1;32mtest with 100000 characters\033[0m\n"
+sleep 2
+printf "\nrunning...\n"
+start=$(date +%s)
+./client $PID "$HUNDREDK"
+end=$(date +%s)
+printf "\nexecution took %d seconds\n" $(($end - $start))
 
 printf "\033[1;32m\n\ntest with unicode characters\033[0m\n"
 sleep 2

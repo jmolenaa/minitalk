@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 22:16:28 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/07/20 13:50:53 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/08/09 18:06:40 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "global_client.h"
 #include <unistd.h>
+#include <stdio.h>
 
 void	send_bit(int bit, int pid)
 {
@@ -26,6 +27,7 @@ void	send_bit(int bit, int pid)
 	if (check == -1)
 		ft_exit_with_error("Sending signal to server failed. \
 		Please make sure you've entered the server PID\n", 1);
+	usleep(1000000);
 }
 
 void	send_char(unsigned char c, int pid)
@@ -35,8 +37,9 @@ void	send_char(unsigned char c, int pid)
 	j = 0;
 	while (j < 8)
 	{
+		g_flag = 0;
 		send_bit(c & 1, pid);
-		if (sleep(3) == 0)
+		if (g_flag == 0)
 			continue ;
 		c = c >> 1;
 		j++;
@@ -68,8 +71,6 @@ void	send_str_len(int pid, char *str)
 	while (i < 64)
 	{
 		send_bit(length & 1, pid);
-		if (sleep(3) == 0)
-			continue ;
 		length = length >> 1;
 		i++;
 	}
@@ -81,7 +82,9 @@ void	send_pid(int pid)
 {
 	while (1)
 	{
-		send_bit(1, pid);
+		if (kill(pid, SIGUSR1) == -1)
+			ft_exit_with_error("Sending signal to server failed. \
+			Please make sure you've entered the server PID\n", 1);
 		if (sleep(3) == 0)
 		{
 			wait_for_other_client();

@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 23:22:42 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/07/20 13:50:35 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/08/09 18:06:35 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "global_server.h"
 #include <limits.h>
 #include <unistd.h>
+#include <stdio.h>
 
 size_t	receive_length(int flag, t_message *current_message)
 {
@@ -94,6 +95,7 @@ void	handle_signal(int flag)
 	{
 		current_message.pid = flag;
 		g_flag = -1;
+		usleep(1000);
 	}
 	else
 		recieve_bit(flag, &current_message);

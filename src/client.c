@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 13:22:02 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/02/18 04:09:59 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/08/09 18:06:48 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 void	handler_sigusr1(int signum, siginfo_t *info, void *context)
 {
+	g_flag = 2;
 	(void)signum;
 	(void)info;
 	(void)context;
@@ -25,7 +26,6 @@ void	handler_sigusr1(int signum, siginfo_t *info, void *context)
 
 void	handler_sigusr2(int signum, siginfo_t *info, void *context)
 {
-	usleep(1000);
 	(void)signum;
 	(void)info;
 	(void)context;
@@ -37,8 +37,8 @@ void	setup_signal_catchers_client(void)
 	struct sigaction	first;
 	struct sigaction	second;
 
-	first = create_sigaction_struct(SIGUSR2, handler_sigusr1, SA_RESTART);
-	second = create_sigaction_struct(SIGUSR1, handler_sigusr2, SA_RESTART);
+	first = create_sigaction_struct(SIGUSR2, handler_sigusr1, SA_NODEFER);
+	second = create_sigaction_struct(SIGUSR1, handler_sigusr2, SA_NODEFER);
 	sigaction(SIGUSR1, &first, NULL);
 	sigaction(SIGUSR2, &second, NULL);
 }
