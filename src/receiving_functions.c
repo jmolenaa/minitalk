@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 23:22:42 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/11/01 06:55:25 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/11/01 07:47:23 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-extern int g_flag;
+extern int	g_flag;
 
 size_t	receive_length(int flag, t_message *current_message)
 {

@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 22:16:28 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/10/26 16:18:15 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/11/01 07:47:17 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int g_flag;
+int	g_flag;
 
 void	send_bit(int bit, int pid)
 {
