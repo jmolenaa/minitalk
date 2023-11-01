@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 13:22:23 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/08/09 18:06:29 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/10/26 16:29:59 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <stdio.h>
 #include "minitalk.h"
 #include "libft.h"
-#include "global_server.h"
+
+int	g_flag;
 
 void	handle_sigusr1(int signum, siginfo_t *info, void *context)
 {

@@ -6,7 +6,7 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 13:22:02 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/08/09 18:06:48 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/11/01 07:07:19 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <signal.h>
 #include <unistd.h>
 #include "minitalk.h"
-#include "global_client.h"
+
+extern int	g_flag;
 
 void	handler_sigusr1(int signum, siginfo_t *info, void *context)
 {
@@ -53,5 +54,5 @@ int	main(int argc, char *argv[])
 	send_pid(pid);
 	send_str_len(pid, argv[2]);
 	send_str(pid, argv[2]);
-	return (1);
+	return (0);
 }

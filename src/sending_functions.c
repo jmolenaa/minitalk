@@ -6,15 +6,16 @@
 /*   By: jmolenaa <jmolenaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/17 22:16:28 by jmolenaa      #+#    #+#                 */
-/*   Updated: 2023/08/09 18:06:40 by jmolenaa      ########   odam.nl         */
+/*   Updated: 2023/10/26 16:18:15 by jmolenaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 #include "libft.h"
-#include "global_client.h"
 #include <unistd.h>
 #include <stdio.h>
+
+int g_flag;
 
 void	send_bit(int bit, int pid)
 {

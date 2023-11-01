@@ -23,14 +23,14 @@ $(NAME): $(LIBFT_DIR) $(CLIENT) $(SERVER)
 
 $(CLIENT): $(OBJ_CLIENT) | $(LIBFT)
 	@echo "\n $(LIGHTGREEN)|C|o|m|p|i|l|i|n|g|  |C|l|i|e|n|t|$(EXIT)\n";
-	@$(CC) $(CFLAGS) -o client -iquote includes -iquote libft/includes $(OBJ_CLIENT) $(LIBFT)
+	$(CC) $(CFLAGS) -o client -I includes -I libft/includes $(OBJ_CLIENT) $(LIBFT)
 
 $(SERVER): $(OBJ_SERVER) | $(LIBFT)
 	@echo "\n $(LIGHTGREEN)|C|o|m|p|i|l|i|n|g|  |S|e|r|v|e|r|$(EXIT)\n";
-	@$(CC) $(CFLAGS) -o server -iquote includes -iquote libft/includes $(OBJ_SERVER) $(LIBFT)
+	@$(CC) $(CFLAGS) -o server -I includes -I libft/includes $(OBJ_SERVER) $(LIBFT)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) -iquote includes -iquote libft/includes -c $(CFLAGS) -o $@ $<
+	@$(CC) -I includes -I libft/includes -c $(CFLAGS) -o $@ $<
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
